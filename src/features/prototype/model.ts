@@ -1,6 +1,7 @@
 import { z } from "zod";
 import marketplace from "./data/marketplace.json" with { type: "json" };
 import people from "./data/people.json" with { type: "json" };
+import closedJob from "./data/closed-job.json" with { type: "json" };
 import type { JobWithCompany } from "@/features/jobs/types";
 
 const id = z
@@ -66,6 +67,8 @@ export const profileSchema = z.object({
   location: shortText,
 });
 const personSchema = profileSchema.extend({
+  /** Prepared scenario candidates are not offered in the person picker. */
+  hidden: z.boolean().optional(),
   id,
   role: z.enum(["candidate", "employer", "operator"]),
   companyId: id.optional(),
@@ -244,7 +247,46 @@ export function initialState(): State {
     stage: "submitted",
     events: [{ stage: "submitted", at: "2026-11-02T09:00:00.000Z", note: "" }],
   });
+  addClosedJobCohort(state);
   return stateSchema.parse(state);
+}
+/** Prepared, fictional applications for one finished listing (training case, 47 applications). */
+function addClosedJobCohort(state: State) {
+  const job = state.jobs.find((x) => x.slug === "automatyzacja-obslugi-zgloszen");
+  if (!job) return;
+  for (const row of closedJob as unknown as { n: string; events: [Stage, string][] }[]) {
+    const personId = `candidate-k${row.n}`;
+    const name = `Kandydat ${row.n}`;
+    const score = 70 + (Number(row.n) % 17);
+    state.people.push({
+      id: personId,
+      role: "candidate",
+      hidden: true,
+      name,
+      headline: "Przykładowy kandydat",
+      bio: "",
+      location: "Kraków",
+      cv: "Przykładowe CV z danych szkoleniowych case'u.",
+      exampleScore: score,
+      exampleSummary: "Dane przykładowe z przygotowanego scenariusza.",
+    });
+    state.applications.push({
+      id: `application-k${row.n}`,
+      candidateId: personId,
+      jobId: job.id,
+      companyId: job.companyId,
+      jobTitle: job.title,
+      candidateName: name,
+      cv: "Przykładowe CV z danych szkoleniowych case'u.",
+      answer: "Odpowiedź przykładowa z przygotowanego scenariusza (dane szkoleniowe).",
+      sourceNotes: "",
+      generatedAnswer: "",
+      score,
+      summary: "Dane przykładowe z przygotowanego scenariusza.",
+      stage: row.events.at(-1)![0],
+      events: row.events.map(([stage, at]) => ({ stage, at, note: "" })),
+    });
+  }
 }
 export function publishedJobs(state: State): JobWithCompany[] {
   return state.jobs

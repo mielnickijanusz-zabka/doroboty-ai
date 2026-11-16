@@ -46,15 +46,29 @@ export function EmployerJobs() {
                   </Link>
                   <p className="mt-3 text-muted-foreground">
                     {state.applications.filter((x) => x.jobId === job.id).length} aplikacji ·{" "}
-                    {job.publicationStatus === "published" ? "Opublikowana" : "Szkic"}
+                    {job.publicationStatus === "published"
+                      ? "Opublikowana"
+                      : job.publicationStatus === "expired"
+                        ? "Zakończona"
+                        : "Szkic"}
                   </p>
                 </div>
-                <Link
-                  to={`/oferty/${job.slug}`}
-                  className={buttonVariants({ variant: "outline", size: "sm" })}
-                >
-                  Zobacz ofertę
-                </Link>
+                <div className="flex flex-wrap items-start gap-2">
+                  <Link
+                    to={`/app/oferty/${job.id}/podsumowanie`}
+                    className={buttonVariants({ size: "sm" })}
+                  >
+                    Podsumowanie
+                  </Link>
+                  {job.publicationStatus === "published" && (
+                    <Link
+                      to={`/oferty/${job.slug}`}
+                      className={buttonVariants({ variant: "outline", size: "sm" })}
+                    >
+                      Zobacz ofertę
+                    </Link>
+                  )}
+                </div>
               </div>
             </article>
           ))

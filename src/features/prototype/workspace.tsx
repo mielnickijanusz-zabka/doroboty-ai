@@ -33,8 +33,8 @@ export function PersonPicker() {
   const audience = params.get("audience");
   const people =
     audience === "candidate" || audience === "employer"
-      ? state.people.filter((person) => person.role === audience)
-      : state.people;
+      ? state.people.filter((person) => person.role === audience && !person.hidden)
+      : state.people.filter((person) => !person.hidden);
   const safeNext = next && /^\/(?!\/)/.test(next) && !next.startsWith("/auth") ? next : null;
   return (
     <section className="prototype-section max-w-4xl">

@@ -15,6 +15,7 @@ import {
   ApplicationDetail,
 } from "./workspace";
 import { EmployerJobs, EmployerJobEditor, CompanyEditor } from "./employer";
+import { JobSummaryPage } from "./job-summary";
 import { SettingsPage, PrivacyPage } from "./settings";
 import { CasePage } from "./case";
 function AppRoutes() {
@@ -106,6 +107,14 @@ function AppRoutes() {
           element={
             <RequireRole role="employer">
               <EmployerJobEditor />
+            </RequireRole>
+          }
+        />
+        <Route
+          path="app/oferty/:id/podsumowanie"
+          element={
+            <RequireRole role="employer">
+              <JobSummaryPage />
             </RequireRole>
           }
         />

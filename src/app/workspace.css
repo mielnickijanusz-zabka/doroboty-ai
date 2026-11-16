@@ -1042,3 +1042,92 @@ code {
     padding: var(--gui-space-m);
   }
 }
+
+.job-summary-lead {
+  margin: var(--gui-space-s) 0 var(--gui-space-m);
+  font-size: var(--gui-text-m);
+  color: var(--gui-text-muted-accessible);
+}
+.job-summary-facts {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--gui-space-m) var(--gui-space-xl);
+  margin: 0 0 var(--gui-space-l);
+}
+.job-summary-facts dt {
+  font-size: var(--gui-text-xs);
+  color: var(--gui-text-muted-accessible);
+}
+.job-summary-facts dd {
+  margin: 2px 0 0;
+  font-weight: 600;
+}
+.job-summary-board,
+.job-summary-action {
+  margin-bottom: var(--gui-space-l);
+}
+.job-summary-funnel {
+  display: grid;
+  gap: var(--gui-space-m);
+  margin: 0 0 var(--gui-space-m);
+  padding: 0;
+  list-style: none;
+}
+.job-summary-funnel li {
+  display: grid;
+  grid-template-columns: 9rem 4rem 4rem 1fr;
+  grid-template-areas:
+    "label number percent note"
+    "track track track track";
+  align-items: baseline;
+  gap: var(--gui-space-xxs) var(--gui-space-s);
+}
+.job-summary-label {
+  grid-area: label;
+  font-weight: 600;
+}
+.job-summary-number {
+  grid-area: number;
+  font-size: var(--gui-text-l);
+  line-height: 1;
+  text-align: right;
+}
+.job-summary-percent {
+  grid-area: percent;
+  color: var(--gui-text-muted-accessible);
+}
+.job-summary-note {
+  grid-area: note;
+  font-size: var(--gui-text-s);
+  color: var(--gui-text-muted-accessible);
+}
+.job-summary-track {
+  grid-area: track;
+  display: block;
+  height: 8px;
+  border-radius: var(--gui-radius-full);
+  background: var(--gui-control-readonly, #ece9e6);
+  overflow: hidden;
+}
+.job-summary-track i {
+  display: block;
+  height: 100%;
+  border-radius: var(--gui-radius-full);
+  background: var(--foreground);
+}
+.job-summary-funnel li[data-signal] .job-summary-track i {
+  background: var(--primary, #ff6fd8);
+}
+.job-summary-sentence {
+  margin: 0 0 var(--gui-space-xs);
+  font-size: var(--gui-text-m);
+}
+@media (max-width: 600px) {
+  .job-summary-funnel li {
+    grid-template-columns: 1fr auto auto;
+    grid-template-areas:
+      "label number percent"
+      "note note note"
+      "track track track";
+  }
+}

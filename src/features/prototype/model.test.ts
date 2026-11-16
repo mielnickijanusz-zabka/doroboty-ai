@@ -33,7 +33,7 @@ describe("coherent browser scenario", () => {
     };
     expect(() => transition(s, input, time)).toThrow("Zatwierdź");
     expect(() => transition(submitted(), { ...input, consent: true }, time)).toThrow("już wysłana");
-    expect(s.applications).toHaveLength(1);
+    expect(s.applications.filter((x) => x.jobId === s.jobs[0].id)).toHaveLength(1);
   });
   it("preserves approved sources while profile and notes evolve", () => {
     const s = submitted();

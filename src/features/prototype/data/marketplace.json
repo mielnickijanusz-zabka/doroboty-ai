@@ -42,7 +42,9 @@
       "category": "lead",
       "function": "product",
       "remoteStatus": "hybrid",
-      "locations": ["Warszawa"],
+      "locations": [
+        "Warszawa"
+      ],
       "coordinates": {
         "latitude": 52.2297,
         "longitude": 21.0122
@@ -69,7 +71,9 @@
       "category": "build",
       "function": "engineering",
       "remoteStatus": "remote",
-      "locations": ["Polska"],
+      "locations": [
+        "Polska"
+      ],
       "coordinates": {
         "latitude": 50.0647,
         "longitude": 19.945
@@ -96,7 +100,10 @@
       "category": "apply",
       "function": "design",
       "remoteStatus": "hybrid",
-      "locations": ["Wrocław", "Warszawa"],
+      "locations": [
+        "Wrocław",
+        "Warszawa"
+      ],
       "coordinates": {
         "latitude": 51.1079,
         "longitude": 17.0385
@@ -123,7 +130,9 @@
       "category": "apply",
       "function": "operations",
       "remoteStatus": "onsite",
-      "locations": ["Warszawa"],
+      "locations": [
+        "Warszawa"
+      ],
       "coordinates": {
         "latitude": 52.255,
         "longitude": 21.03
@@ -150,7 +159,9 @@
       "category": "lead",
       "function": "marketing",
       "remoteStatus": "remote",
-      "locations": ["Europa"],
+      "locations": [
+        "Europa"
+      ],
       "coordinates": {
         "latitude": 52.0693,
         "longitude": 19.4803
@@ -177,7 +188,9 @@
       "category": "build",
       "function": "data",
       "remoteStatus": "hybrid",
-      "locations": ["Wrocław"],
+      "locations": [
+        "Wrocław"
+      ],
       "coordinates": {
         "latitude": 51.125,
         "longitude": 17.065
@@ -192,6 +205,31 @@
       "publicationStatus": "published",
       "publishedAt": "2026-09-08T09:00:00.000Z",
       "expiryAt": "2026-11-08T23:59:59.000Z",
+      "verificationStatus": "editorial"
+    },
+    {
+      "id": "20000000-0000-4000-8000-000000000007",
+      "slug": "automatyzacja-obslugi-zgloszen",
+      "companyId": "10000000-0000-4000-8000-000000000001",
+      "title": "Automatyzacja obsługi zgłoszeń",
+      "summary": "Zakończone ogłoszenie z przykładowymi danymi: rola przy automatyzacji obsługi zgłoszeń w zespole operacyjnym.",
+      "description": "Zakończone ogłoszenie (30 dni, czerwiec 2026) z przygotowanymi danymi przykładowymi. Służy do pokazania pracodawcy podsumowania efektu ogłoszenia: ile było aplikacji, zaproszeń, rozmów i kontynuacji.",
+      "category": "apply",
+      "function": "operations",
+      "remoteStatus": "remote",
+      "locations": [
+        "Kraków"
+      ],
+      "seniority": "mid",
+      "contract": "b2b",
+      "salaryMin": 15000,
+      "salaryMax": 19000,
+      "salaryCurrency": "PLN",
+      "salaryPeriod": "month",
+      "salaryKind": "net",
+      "publicationStatus": "expired",
+      "publishedAt": "2026-06-02T08:00:00.000Z",
+      "expiryAt": "2026-07-02T08:00:00.000Z",
       "verificationStatus": "editorial"
     }
   ]
